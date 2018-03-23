@@ -1,19 +1,25 @@
-import React from 'react';
-import './Adventures.css'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const Adventures = (props) => (
-  <div>
-    <h1>Adventures</h1>
-      {props.adventures.map(adventure =>
-        <div className="AdventureCard">
-          <h3>{adventure.title}</h3>
-          <p>Location:{adventure.location}</p>
-          <p>Description:{adventure.description}</p>
-          <p>Date:{adventure.date}</p>
-          <img className="AdventureImage" src={adventure.img_url} alt={adventure.title} />
-        </div>
-      )}
-  </div>
-)
+import AdventureCard from '../components/AdventureCard';
+import AdventureForm from './AdventureForm';
+import './Adventures.css';
 
-export default Adventures;
+class Adventures extends Component {
+
+  // componentDidMount() {
+  //   this.props.getAdventures()
+  // }
+
+  render() {
+    return (
+      <div className="AdventuresContainer">
+        <h1>Adventures</h1>
+        {this.props.adventures.map(adventure => <AdventureCard key={adventure.id} adventure={adventure} />)}
+        <AdventureForm />
+      </div>
+    );
+  }
+}
+
+export default Adventures
