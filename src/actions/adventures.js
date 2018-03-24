@@ -14,6 +14,13 @@ const addAdventure = adventure => {
   }
 }
 
+export const removeAdventure = adventure => {
+  return {
+    type: 'REMOVE_ADVENTURE',
+    adventure
+  }
+}
+
 // ** Async Actions **
 export const getAdventures = () => {
   return dispatch => {
@@ -22,6 +29,17 @@ export const getAdventures = () => {
       .then(adventures => dispatch(setAdventures(adventures)))
       .catch(error => console.log(error));
   }
+}
+
+export const fetchAdventure = (adventureId) => {
+	return dispatch => {
+		return fetch(`http://localhost:3001/api/adventures/${adventureId}`)
+			.then(response => response.json())
+			.then(adventure => {
+				dispatch(setAdventures([adventure]));
+			})
+			.catch(error => console.log(error));
+	}
 }
 
 export const createAdventure = adventure => {
@@ -39,5 +57,18 @@ export const createAdventure = adventure => {
         dispatch(resetAdventureForm())
       })
       .catch(error => console.log(error))
+  }
+}
+
+export const deleteAdventure = (adventureId, routerHistory) => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/api/adventures/${adventureId}`, {
+      method: "DELETE"
+    })
+    .then(response => {
+      dispatch(removeAdventure(adventureId));
+      routerHistory.replace('/adventures');
+    })
+    .catch(error => console.log(error))
   }
 }
