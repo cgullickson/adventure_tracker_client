@@ -1,9 +1,10 @@
 
 const initialState = {
-  name: '',
-  price: 0,
+  title: '',
+  date: '',
   img_url: '',
-  length: 0
+  description: '',
+  location: ''
 }
 
 export default (state = initialState, action) => {
@@ -14,7 +15,7 @@ export default (state = initialState, action) => {
 
     case 'RESET_ADVENTURE_FORM':
       return initialState;
-    
+
     default:
       return state;
   }

@@ -24,11 +24,11 @@ class AdventureForm extends Component {
     const { title, location, description, date, img_url} = this.props.adventureFormData;
 
     return (
-      <div>
-        Add An Adventure To The Inventory
+      <div className="addAdventure">
+        <h1>Add An Adventure</h1>
         <form onSubmit={this.handleOnSubmit}>
           <div>
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Title:<br/></label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -37,7 +37,7 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="location">Location:</label>
+            <label htmlFor="location">Location:<br/></label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -46,7 +46,7 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="img_url">Image Url:</label>
+            <label htmlFor="img_url">Image Url:<br/></label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -55,7 +55,7 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="description">Description:</label>
+            <label htmlFor="description">Description:<br/></label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -64,7 +64,7 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="date">Date:</label>
+            <label htmlFor="date">Date:<br/></label>
             <input
               type="text"
               onChange={this.handleOnChange}

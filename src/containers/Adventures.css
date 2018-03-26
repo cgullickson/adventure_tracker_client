@@ -1,5 +1,7 @@
 .AdventuresContainer {
-  padding: 16px;
+  padding: 15px;
+  width:100%;
+  margin: 1.5%;
 }
 .AdventureCard {
   float: left;

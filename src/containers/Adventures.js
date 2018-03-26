@@ -14,10 +14,13 @@ class Adventures extends Component {
 
   render() {
     return (
-      <div className="AdventuresContainer">
-        <h1>Adventures</h1>
-        {this.props.adventures.map(adventure => <AdventureCard key={adventure.id} adventure={adventure} />)}
-        <AdventureForm />
+      <div>
+        <div className="AdventuresContainer">
+          {this.props.adventures.map(adventure => <AdventureCard key={adventure.id} adventure={adventure} />)}
+        </div>
+        <div className="addAdventure">
+          <AdventureForm />
+        </div>
       </div>
     );
   }

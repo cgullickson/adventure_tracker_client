@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAdventure } from '../actions/adventures';
 import { deleteAdventure } from '../actions/adventures';
-import AdventureForm from './AdventureForm';
-import AdventureCard from '../components/AdventureCard';
-import Adventures from './Adventures';
 
 
 
@@ -28,7 +25,7 @@ class AdventureShow extends Component {
     <div className='adventureShow'>
       {adventure ? (
       <div>
-        <h1 className="adventureName">{adventure.name}</h1>
+        <h1 className="adventureName">{adventure.title}</h1>
         <h3><p>Location: <br></br>{adventure.location}</p></h3>
         <img className="AdventureImage" src={adventure.img_url} alt={adventure.title} />
         <h3><p>Description: <br></br>{adventure.description}</p></h3>
