@@ -8,11 +8,6 @@ import { deleteAdventure } from '../actions/adventures';
 
 class AdventureShow extends Component {
 
-
-  handleOnClick = () => {
-    this.props.likeAdventure(this.props.adventure[0])
-  }
-
   componentDidMount() {
     this.props.fetchAdventure(this.props.match.params.adventureId);
 	}

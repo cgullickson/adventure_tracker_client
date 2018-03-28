@@ -1,15 +1,14 @@
 import React from 'react';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
   return (
-    <div>
-      <Menu>
+    <div className="navbar">
+      <Menu inverted>
         <Menu.Item header>Adventure Tracker</Menu.Item>
-        <Menu.Item as={Link} to='/'>
-          <Icon name="home"/>
+        <Menu.Item as={Link} to='/' name='Home'>
         </Menu.Item>
         <Menu.Item as={Link} to='/adventures' name='Adventures'>
         </Menu.Item>
