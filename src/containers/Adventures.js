@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import AdventureCard from '../components/AdventureCard';
 import AdventureForm from './AdventureForm';
 import { getAdventures } from '../actions/adventures';
@@ -17,9 +16,9 @@ class Adventures extends Component {
       <div>
         <div className="AdventuresContainer">
           {this.props.adventures.map(adventure => <AdventureCard key={adventure.id} adventure={adventure} />)}
-        </div>
-        <div className="addAdventure">
-          <AdventureForm />
+          <div className="AdventureCard">
+            <AdventureForm />
+          </div>
         </div>
       </div>
     );

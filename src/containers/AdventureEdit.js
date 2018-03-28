@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateAdventureFormData } from '../actions/adventureForm';
-import { createAdventure } from '../actions/adventures';
+import { editAdventure } from '../actions/adventures';
+import { fetchAdventure } from '../actions/adventures';
 
-class AdventureForm extends Component {
+class AdventureEdit extends Component {
 
   handleOnChange = event => {
     const { name, value } = event.target;
@@ -14,9 +15,8 @@ class AdventureForm extends Component {
   }
 
   handleOnSubmit = event => {
-    debugger
     event.preventDefault()
-    this.props.createAdventure(this.props.adventureFormData)
+    this.props.editAdventure(this.props.adventure.id, this.props.adventure)
   }
 
   render() {
@@ -24,8 +24,7 @@ class AdventureForm extends Component {
 
     return (
       <div className="addAdventure">
-      <br/>
-        <h1>Add An Adventure</h1>
+        <h1>Edit This Adventure</h1>
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <label htmlFor="title">Title:<br/></label>
@@ -73,8 +72,7 @@ class AdventureForm extends Component {
             />
           </div>
           <br/>
-
-          <button type="submit">Add Adventure</button>
+          <button type="submit">Update Adventure</button>
         </form>
       </div>
     )
@@ -83,11 +81,13 @@ class AdventureForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    adventureFormData: state.adventureFormData
+    adventureFormData: state.adventureFormData,
+    adventure: state.adventures
   }
 }
 
 export default connect(mapStateToProps, {
   updateAdventureFormData,
-  createAdventure
-})(AdventureForm);
+  editAdventure,
+  fetchAdventure
+})(AdventureEdit);

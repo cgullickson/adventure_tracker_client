@@ -14,6 +14,13 @@ const addAdventure = adventure => {
   }
 }
 
+const updateAdventure = adventure => {
+  return {
+    type: 'UPDATE_ADVENTURE_SUCCESS',
+    adventure
+  }
+}
+
 export const removeAdventure = adventure => {
   return {
     type: 'REMOVE_ADVENTURE',
@@ -54,6 +61,24 @@ export const createAdventure = adventure => {
       .then(response => response.json())
       .then(adventure => {
         dispatch(addAdventure(adventure))
+        dispatch(resetAdventureForm())
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+export const editAdventure = (adventureId, adventure) => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/api/adventures/${adventureId}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ adventure: adventure })
+    })
+      .then(response => response.json())
+      .then(adventure => {
+        dispatch(updateAdventure(adventure))
         dispatch(resetAdventureForm())
       })
       .catch(error => console.log(error))

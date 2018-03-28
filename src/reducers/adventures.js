@@ -6,6 +6,9 @@ export default (state = [], action) => {
     case 'CREATE_ADVENTURE_SUCCESS':
       return state.concat(action.adventure);
 
+    case 'UPDATE_ADVENTURE_SUCCESS':
+      return state.concat(action.adventure);
+
     default:
       return state;
   }

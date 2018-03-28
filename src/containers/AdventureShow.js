@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAdventure } from '../actions/adventures';
 import { deleteAdventure } from '../actions/adventures';
-
-
-
+import AdventureEdit from './AdventureEdit'
 
 class AdventureShow extends Component {
 
@@ -22,17 +20,22 @@ class AdventureShow extends Component {
       <div>
         <h1 className="adventureName">{adventure.title}</h1>
         <h3><p>Location: <br></br>{adventure.location}</p></h3>
-        <img className="AdventureImage" src={adventure.img_url} alt={adventure.title} />
+        <img className="AdventureShowImage" src={adventure.img_url} alt={adventure.title} />
         <h3><p>Description: <br></br>{adventure.description}</p></h3>
         <h3><p>Date:  {adventure.date}</p></h3>
       </div>
     ) : (
       <p>Loading...</p>
     )}
-    <br></br>
-    <button onClick={() => deleteAdventure(adventure.id, history)}>
+    <br/>
+    <button type="submit" onClick={() => deleteAdventure(adventure.id, history)}>
       Delete
     </button>
+    <br/>
+    <br/>
+    <div className="AdventureCardCenter">
+      <AdventureEdit />
+    </div>
     </div>
     )
   }
