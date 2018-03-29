@@ -1,34 +1,45 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { updateAdventureFormData } from '../actions/adventureForm';
-import { createAdventure } from '../actions/adventures';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateAdventureFormData } from "../actions/adventureForm";
+import { createAdventure } from "../actions/adventures";
 
 class AdventureForm extends Component {
-
   handleOnChange = event => {
     const { name, value } = event.target;
-    const currentAdventureFormData = Object.assign({}, this.props.adventureFormData, {
-      [name]: value
-    })
-    this.props.updateAdventureFormData(currentAdventureFormData)
-  }
+    const currentAdventureFormData = Object.assign(
+      {},
+      this.props.adventureFormData,
+      {
+        [name]: value
+      }
+    );
+    this.props.updateAdventureFormData(currentAdventureFormData);
+  };
 
   handleOnSubmit = event => {
-    debugger
-    event.preventDefault()
-    this.props.createAdventure(this.props.adventureFormData)
-  }
+    debugger;
+    event.preventDefault();
+    this.props.createAdventure(this.props.adventureFormData);
+  };
 
   render() {
-    const { title, location, description, date, img_url} = this.props.adventureFormData;
+    const {
+      title,
+      location,
+      description,
+      date,
+      img_url
+    } = this.props.adventureFormData;
 
     return (
       <div className="addAdventure">
-      <br/>
+        <br />
         <h1>Add An Adventure</h1>
         <form onSubmit={this.handleOnSubmit}>
           <div>
-            <label htmlFor="title">Title:<br/></label>
+            <label htmlFor="title">
+              Title:<br />
+            </label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -37,7 +48,9 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="location">Location:<br/></label>
+            <label htmlFor="location">
+              Location:<br />
+            </label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -46,7 +59,9 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="img_url">Image Url:<br/></label>
+            <label htmlFor="img_url">
+              Image Url:<br />
+            </label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -55,7 +70,9 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="description">Description:<br/></label>
+            <label htmlFor="description">
+              Description:<br />
+            </label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -64,7 +81,9 @@ class AdventureForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="date">Date:<br/></label>
+            <label htmlFor="date">
+              Date:<br />
+            </label>
             <input
               type="text"
               onChange={this.handleOnChange}
@@ -72,20 +91,20 @@ class AdventureForm extends Component {
               value={date}
             />
           </div>
-          <br/>
+          <br />
 
           <button type="submit">Add Adventure</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     adventureFormData: state.adventureFormData
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, {
   updateAdventureFormData,
