@@ -72,6 +72,7 @@ export const editAdventure = (adventureId, adventure) => {
     return fetch(`http://localhost:3001/api/adventures/${adventureId}`, {
       method: "PUT",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ adventure: adventure })

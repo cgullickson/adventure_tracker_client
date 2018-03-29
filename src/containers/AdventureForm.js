@@ -17,7 +17,6 @@ class AdventureForm extends Component {
   };
 
   handleOnSubmit = event => {
-    debugger;
     event.preventDefault();
     this.props.createAdventure(this.props.adventureFormData);
   };

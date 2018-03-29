@@ -19,7 +19,10 @@ class AdventureEdit extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.editAdventure(this.props.adventure.id, this.props.adventure);
+    this.props.editAdventure(
+      this.props.adventure.id,
+      this.props.adventureFormData
+    );
   };
 
   render() {
@@ -101,7 +104,7 @@ class AdventureEdit extends Component {
 const mapStateToProps = state => {
   return {
     adventureFormData: state.adventureFormData,
-    adventure: state.adventures
+    adventure: state.adventures[0]
   };
 };
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAdventure } from "../actions/adventures";
 import { deleteAdventure } from "../actions/adventures";
+import logo from "../logo.svg";
 import AdventureEdit from "./AdventureEdit";
 
 class AdventureShow extends Component {
@@ -36,11 +37,14 @@ class AdventureShow extends Component {
               </p>
             </h3>
             <h3>
-              <p>Date: {adventure.date}</p>
+              <p>
+                Date: <br />
+                {adventure.date}
+              </p>
             </h3>
           </div>
         ) : (
-          <p>Loading...</p>
+          <img src={logo} className="App-logo" alt="logo" />
         )}
         <br />
         <button
@@ -50,9 +54,9 @@ class AdventureShow extends Component {
           Delete Adventure
         </button>
         <br />
-        <br />
+        <br />{" "}
         <div className="AdventureCardCenter">
-          <AdventureEdit />
+          <AdventureEdit />{" "}
         </div>
       </div>
     );

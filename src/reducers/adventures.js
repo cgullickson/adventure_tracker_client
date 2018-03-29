@@ -7,8 +7,10 @@ export default (state = [], action) => {
       return state.concat(action.adventure);
 
     case "UPDATE_ADVENTURE_SUCCESS":
-      return state.concat(action.adventure);
-
+      return [
+        ...state.filter(adventure => adventure.id !== action.adventure.id),
+        Object.assign({}, action.adventure)
+      ];
     default:
       return state;
   }
