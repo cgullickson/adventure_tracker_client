@@ -28,6 +28,13 @@ export const removeAdventure = adventure => {
   };
 };
 
+export const addLikes = adventure => {
+  return {
+    type: "LIKE_ADVENTURE",
+    adventure
+  };
+};
+
 // ** Async Actions **
 export const getAdventures = () => {
   return dispatch => {
@@ -81,6 +88,26 @@ export const editAdventure = (adventureId, adventure) => {
       .then(adventure => {
         dispatch(updateAdventure(adventure));
         dispatch(resetAdventureForm());
+      })
+      .catch(error => console.log(error));
+  };
+};
+
+export const likeAdventure = (adventure, adventures) => {
+  const updatedAdventure = Object.assign(...adventure, {
+    likes: adventure.likes + 1
+  });
+  return dispatch => {
+    return fetch(`http://localhost:3001/api/adventures/${adventure.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ adventure: updatedAdventure })
+    })
+      .then(response => response.json())
+      .then(adventure => {
+        dispatch(addLikes(adventure));
       })
       .catch(error => console.log(error));
   };

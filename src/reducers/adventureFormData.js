@@ -3,7 +3,8 @@ const initialState = {
   date: "",
   img_url: "",
   description: "",
-  location: ""
+  location: "",
+  likes: 0
 };
 
 export default (state = initialState, action) => {
