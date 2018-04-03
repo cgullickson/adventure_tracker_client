@@ -11,10 +11,14 @@ class Adventures extends Component {
   }
 
   render() {
+    const sortedAdventures = this.props.adventures.sort(function(a, b) {
+      return b.likes - a.likes;
+    });
+
     return (
       <div>
         <div className="AdventuresContainer">
-          {this.props.adventures.map(adventure => (
+          {sortedAdventures.map(adventure => (
             <AdventureCard key={adventure.id} adventure={adventure} />
           ))}
           <div className="AdventureCard">

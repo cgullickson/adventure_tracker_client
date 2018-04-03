@@ -7,7 +7,6 @@ import { likeAdventure } from "../actions/adventures";
 class AdventureCard extends React.Component {
   render() {
     let adventure = this.props.adventure;
-    let adventures = this.props.adventures;
     return (
       <div key={adventure.id} className="AdventureCard">
         <Link to={`adventures/${adventure.id}`}>
@@ -31,16 +30,14 @@ class AdventureCard extends React.Component {
         </p>
         <div>
           <button
+            type="submit"
             onClick={() => {
-              this.props.likeAdventure(
-                this.props.adventure,
-                this.props.adventures
-              );
+              this.props.likeAdventure(adventure);
             }}
           >
             Like
           </button>{" "}
-          <p>likes: {this.props.adventure.likes}</p>
+          <p>Likes: {adventure.likes}</p>
         </div>
         <div />
       </div>

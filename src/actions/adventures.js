@@ -93,7 +93,7 @@ export const editAdventure = (adventureId, adventure) => {
   };
 };
 
-export const likeAdventure = (adventure, adventures) => {
+export const likeAdventure = adventure => {
   const updatedAdventure = Object.assign(...adventure, {
     likes: adventure.likes + 1
   });
